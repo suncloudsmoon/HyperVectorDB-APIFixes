@@ -1,3 +1,9 @@
+// MODIFIED FILE
+// MODIFIED ON THE FOLLOWING DATES: 8/19/2024, 8/20/2024
+
+using OpenAI;
+using OpenAI.Embeddings;
+
 namespace HyperVectorDB.Tests;
 
 [TestFixture]
@@ -24,7 +30,11 @@ public class ProcessorTests
     [Test]
     public void PreprocessorTest()
     {
-        HyperVectorDB DB = new HyperVectorDB(new Embedder.LmStudio(), "TestDatabase");
+        OpenAIClientOptions options = new OpenAIClientOptions
+        {
+            Endpoint = new Uri("http://localhost:11434/v1")
+        };
+        HyperVectorDB DB = new HyperVectorDB(new Embedder.EmbedderOpenAI("mxbai-embed-large", "dummy_key", options), "TestDatabase");
         DB.IndexDocument("This is a test document about dogs", TestPreprocessor, null, "TestDatabase");
         DB.IndexDocument("This is a test document about cats", TestPreprocessor, null, "TestDatabase");
         DB.IndexDocument("This is a test document about fish", TestPreprocessor, null, "TestDatabase");
@@ -52,7 +62,11 @@ public class ProcessorTests
     [Test]
     public void PostprocessorTest()
     {
-        HyperVectorDB DB = new HyperVectorDB(new Embedder.LmStudio(), "TestDatabase");
+        OpenAIClientOptions options = new OpenAIClientOptions
+        {
+            Endpoint = new Uri("http://localhost:11434/v1")
+        };
+        HyperVectorDB DB = new HyperVectorDB(new Embedder.EmbedderOpenAI("all-minilm", "dummy_key", options), "TestDatabase");
         DB.IndexDocument("This is a test document about dogs", null, TestPostprocessor, "TestDatabase");
         DB.Save();
         var result = DB.QueryCosineSimilarity("dogs", 1);

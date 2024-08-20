@@ -1,4 +1,7 @@
-﻿using System;
+﻿// MODIFIED FILE
+// MODIFIED ON THE FOLLOWING DATES: 8/19/2024
+
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
@@ -49,7 +52,7 @@ namespace HyperVectorDB
             Name = name;
         }
 
-        public async void Save(string path)
+        public void Save(string path)
         {
             if (fileValid) { return; }
             var savepath = Path.Combine(path, Name);
@@ -59,16 +62,15 @@ namespace HyperVectorDB
             }
 
             byte[] vectorsBytes = MessagePackSerializer.Serialize(vectors);
-            var vectorsToken = System.IO.File.WriteAllBytesAsync(Path.Combine(savepath, "vectors.bin"), vectorsBytes);
+            System.IO.File.WriteAllBytes(Path.Combine(savepath, "vectors.bin"), vectorsBytes);
 
             byte[] documentsBytes = MessagePackSerializer.Serialize(documents);
-            var documentsToken = System.IO.File.WriteAllBytesAsync(Path.Combine(savepath, "documents.bin"), documentsBytes);
-            await vectorsToken;
-            await documentsToken;
+            System.IO.File.WriteAllBytes(Path.Combine(savepath, "documents.bin"), documentsBytes);
 
             fileValid = true;
         }
-        public async void Load(string path)
+
+        public void Load(string path)
         {
             var loadpath = Path.Combine(path, Name);
             if (!Directory.Exists(loadpath))
@@ -76,17 +78,15 @@ namespace HyperVectorDB
                 throw new DirectoryNotFoundException($"Directory {loadpath} not found.");
             }
 
-            var vectorsToken = System.IO.File.ReadAllBytesAsync(Path.Combine(loadpath, "vectors.bin"));
-            var documentsToken = System.IO.File.ReadAllBytesAsync(Path.Combine(loadpath, "documents.bin"));
+            byte[] vectorsBytes = System.IO.File.ReadAllBytes(Path.Combine(loadpath, "vectors.bin"));
+            vectors = MessagePackSerializer.Deserialize<List<double[]>>(vectorsBytes, options);
 
-            await vectorsToken;
-            vectors = MessagePackSerializer.Deserialize<List<double[]>>(vectorsToken.Result, options);
-
-            await documentsToken;
-            documents = MessagePackSerializer.Deserialize<List<HVDBDocument>>(documentsToken.Result, options);
+            byte[] documentsBytes = System.IO.File.ReadAllBytes(Path.Combine(loadpath, "documents.bin"));
+            documents = MessagePackSerializer.Deserialize<List<HVDBDocument>>(documentsBytes, options);
 
             fileValid = true;
         }
+
         public void Add(double[] vector, HVDBDocument doc)
         {
             if (vector == null)
