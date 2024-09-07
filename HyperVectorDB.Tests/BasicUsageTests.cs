@@ -34,7 +34,7 @@ public class BasicUsageTests
         {
             Endpoint = new Uri("http://localhost:11434/v1")
         };
-        HyperVectorDB DB = new HyperVectorDB(new Embedder.EmbedderOpenAI("mxbai-embed-large", "dummy_key", options), "TestDatabase");
+        HyperVectorDB DB = new HyperVectorDB(new Embedder.EmbedderOpenAI("all-minilm", "dummy_key", options), "TestDatabase");
         DB.CreateIndex("TestIndex");
 
         DB.IndexDocument("TestIndex", "This is a test document about dogs");
@@ -55,7 +55,7 @@ public class BasicUsageTests
         DB.IndexDocument("TestIndex", "This is a test document about birds and dogs and cats and fish");
 
         DB.Save();
-        DB = new HyperVectorDB(new Embedder.EmbedderOpenAI("mxbai-embed-large", "dummy_key", options), "TestDatabase");
+        DB = new HyperVectorDB(new Embedder.EmbedderOpenAI("all-minilm", "dummy_key", options), "TestDatabase");
         DB.Load();
 
         var result = DB.QueryCosineSimilarity("dogs");

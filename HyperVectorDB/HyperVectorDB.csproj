@@ -46,7 +46,7 @@ Readme </Description>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="OpenAI" Version="2.0.0-beta.10" />
+    <PackageReference Include="OpenAI" Version="2.0.0-beta.11" />
     <PackageReference Include="Roslynator.Analyzers" Version="4.12.4">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
