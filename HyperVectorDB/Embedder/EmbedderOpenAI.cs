@@ -3,22 +3,18 @@
 
 using System;
 using System.ClientModel;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using OpenAI;
 using OpenAI.Embeddings;
 
-namespace HyperVectorDB.Embedder {
+namespace HyperVectorDB.Embedder
+{
     public class EmbedderOpenAI : IEmbedder {
-        private string _model;
-        private EmbeddingClient _client;
+        private readonly string _model;
+        private readonly EmbeddingClient _client;
         public EmbedderOpenAI(string model, string apiKey, OpenAIClientOptions options) {
             _model = model;
-            _client = new EmbeddingClient(model, apiKey, options);
+            _client = new EmbeddingClient(model, new ApiKeyCredential(apiKey), options);
         }
         public double[] GetVector(string document)
         {
