@@ -15,7 +15,7 @@ MODIFIED ON THE FOLLOWING DATES: 8/19/2024, 8/20/2024
     <Description> Local Vector Database coded in c# supports Cosine Similarity, Jaccard Dissimilarity as well as Euclidean , Manhattan, ChebyShev and Canberra distances
 Resources
 Readme </Description>
-    <Version>1.0.7</Version>
+    <Version>1.0.8</Version>
     <PackageProjectUrl>https://github.com/suncloudsmoon/HyperVectorDB</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/suncloudsmoon/HyperVectorDB</RepositoryUrl>
