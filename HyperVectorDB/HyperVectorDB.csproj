@@ -7,23 +7,27 @@
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Title>HyperVectorDB API Fixes</Title>
-    <Description> Local Vector Database coded in c# supports Cosine Similarity, Jaccard Dissimilarity as well as Euclidean , Manhattan, ChebyShev and Canberra distances
-Resources
-Readme </Description>
-    <Version>1.0.9</Version>
+    <Description>HyperVectorDB – simple. powerful.
+A local vector database built in C#, engineered for effortless precision. Explore your data using Cosine, Jaccard, Euclidean, Manhattan, Chebyshev, and Canberra distances.</Description>
+    <Version>1.1.0</Version>
     <PackageProjectUrl>https://github.com/suncloudsmoon/HyperVectorDB-APIFixes</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/suncloudsmoon/HyperVectorDB-APIFixes</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>vectordb, ai, database, db, embeddings</PackageTags>
-    <AssemblyVersion>1.0.9</AssemblyVersion>
-    <FileVersion>1.0.9</FileVersion>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>HyperVectorDB-APIFixes</PackageId>
-    <PackageReleaseNotes>Bug fixes and other improvements</PackageReleaseNotes>
-    <Copyright>This project is licensed under LGPL 2.1</Copyright>
+    <PackageReleaseNotes>1.1.0
+- Update copyright details for package
+- Update package description
+---
+1.0.9
+- Bug fixes and other improvements</PackageReleaseNotes>
+    <Copyright>This project is licensed under LGPL</Copyright>
     <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
