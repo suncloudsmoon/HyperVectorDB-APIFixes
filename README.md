@@ -1,16 +1,16 @@
-# HyperVectorDB
+# HyperVectorDB-APIFixes
 
-HyperVectorDB is a local vector database built in C# that supports various distance/similarity measures. It is designed to store vectors and associated documents and perform high-performance vector queries. This project supports Cosine Similarity, Jaccard Dissimilarity, as well as Euclidean, Manhattan, Chebyshev, and Canberra distances.
+HyperVectorDB-APIFixes is a fork of HyperVectorDB that changes the OpenAI library dependency (the newer OpenAI-dotnet library is used). HyperVectorDB is a local vector database built in C# that supports various distance/similarity measures. It is designed to store vectors and associated documents and perform high-performance vector queries. This project supports Cosine Similarity, Jaccard Dissimilarity, as well as Euclidean, Manhattan, Chebyshev, and Canberra distances.
 If you are looking for a python library to do the same thing check out John Dagdelen https://github.com/jdagdelen/hyperDB
 
 ## Installation
 
 ```
-dotnet add package HyperVectorDB
+dotnet add package HyperVectorDB-APIFixes
 ```
 
 
-## Features(To be updated)
+## Features
 
 - **Query/Response Caching**: Currently only supported for cosine similarity queries. This feature allows the database to cache the results of a query for a given vector, so that the next time the same vector is queried, the results are returned immediately. This feature is useful for applications that require frequent queries on the same vector.
 - **Cache invalidation**: Cache invalidation is supported for cosine similarity queries. The cache is invalidated when a new vector is added to the database, or when a vector is removed from the database.
@@ -38,11 +38,8 @@ Contributions are welcome. Please feel free to fork the project, make changes, a
 
 ## License
 
-This project is open-source. Released under the MIT license. Please see the license file for more information.
-
-Please note that some of the code in this project(Math.cs) is based on Acord.Math library which is released under the GNU Lesser General Public License v2.1 license.
-TFIDF is from Kory Becker's project located at https://github.com/primaryobjects/TFIDF
+See LICENSE.
 
 ## About this project and its author and why it came to be
 
-It started out with me getting back into artificial intellegence and wanting to do so using c#.  I was unable to find anything that would suite my needs for a vector database.  Then John Dagdelen put together this vector store in python https://github.com/jdagdelen/hyperDB,  it was faily basic at the time posted without that many lines of code so I decided to try and use gpt to port it to c#.  This was somewhat successful but it did not quite work as needed so this project was born.
+It started out with me getting back into artificial intellegence and wanting to do so using C#.  I was unable to find anything that would suite my needs for a vector database.  Then John Dagdelen put together this vector store in python https://github.com/jdagdelen/hyperDB,  it was faily basic at the time posted without that many lines of code so I decided to try and use gpt to port it to C#.  This was somewhat successful but it did not quite work as needed so this project was born.
