@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HyperVectorDB.Embedder;
 
-namespace HyperVectorDB {
-	/// <summary>
-	/// The top level object of the vector database system, and the center point of the API.
-	/// </summary>
-	public class HyperVectorDB {
+namespace HyperVectorDB
+{
+    /// <summary>
+    /// The top level object of the vector database system, and the center point of the API.
+    /// </summary>
+    public class HyperVectorDB {
 
 		/// <summary>
 		/// Path to the directory where the database will be stored on disk.

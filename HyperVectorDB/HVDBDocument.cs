@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MessagePack;
 
-namespace HyperVectorDB {
+namespace HyperVectorDB
+{
     /// <summary>
     /// Basic object associating a text sequence with a globally unique ID.
     /// </summary>

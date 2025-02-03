@@ -17,13 +17,8 @@
 //    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HyperVectorDB {
+namespace HyperVectorDB
+{
     static class Math {
         public static double CosineSimilarity(double[] x, double[] y) {
             double num = 0.0;

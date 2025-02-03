@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace HyperVectorDB {
+namespace HyperVectorDB
+{
     /// <summary>
     /// Container class for `HVDBDocument` records and their linear distance from the query string.
     /// </summary>
