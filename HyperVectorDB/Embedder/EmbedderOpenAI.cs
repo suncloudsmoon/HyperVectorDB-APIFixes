@@ -1,7 +1,4 @@
-﻿// MODIFIED FILE
-// MODIFIED ON THE FOLLOWING DATES: 8/20/2024
-
-using System;
+﻿using System;
 using System.ClientModel;
 using System.Text.Json;
 using OpenAI;
@@ -12,9 +9,9 @@ namespace HyperVectorDB.Embedder
     public class EmbedderOpenAI : IEmbedder {
         private readonly string _model;
         private readonly EmbeddingClient _client;
-        public EmbedderOpenAI(string model, string apiKey, OpenAIClientOptions options) {
+        public EmbedderOpenAI(string model, ApiKeyCredential apiKey, OpenAIClientOptions options) {
             _model = model;
-            _client = new EmbeddingClient(model, new ApiKeyCredential(apiKey), options);
+            _client = new EmbeddingClient(model, apiKey, options);
         }
         public double[] GetVector(string document)
         {

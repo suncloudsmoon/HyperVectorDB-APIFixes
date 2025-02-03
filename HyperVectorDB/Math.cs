@@ -1,6 +1,4 @@
-﻿// MODIFIED FILE FROM ACCORD MATH LIBRARY
-// MODIFIED ON THE FOLLOWING DATES: 6/19/2024, 7/4/2024
-//
+﻿//
 // Copyright © César Souza, 2009-2017
 // cesarsouza at gmail.com
 //

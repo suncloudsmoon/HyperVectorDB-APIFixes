@@ -1,9 +1,4 @@
-﻿<!--
-MODIFIED FILE
-MODIFIED ON THE FOLLOWING DATES: 8/19/2024, 8/20/2024
--->
-
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
