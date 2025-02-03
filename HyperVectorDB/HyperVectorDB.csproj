@@ -15,13 +15,15 @@ Readme </Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/suncloudsmoon/HyperVectorDB</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>vectordb, ai, database, db</PackageTags>
+    <PackageTags>vectordb, ai, database, db, embeddings</PackageTags>
     <AssemblyVersion>1.0.9</AssemblyVersion>
     <FileVersion>1.0.9</FileVersion>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>HyperVectorDB-APIFixes</PackageId>
+    <PackageReleaseNotes>Bug fixes and other improvements</PackageReleaseNotes>
+    <Copyright>This project is licensed under LGPL 2.1</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

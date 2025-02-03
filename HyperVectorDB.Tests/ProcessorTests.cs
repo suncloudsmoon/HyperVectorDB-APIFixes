@@ -1,3 +1,5 @@
+using System.ClientModel;
+using NUnit.Framework.Legacy;
 using OpenAI;
 
 namespace HyperVectorDB.Tests;
@@ -30,7 +32,7 @@ public class ProcessorTests
         {
             Endpoint = new Uri("http://localhost:11434/v1")
         };
-        HyperVectorDB DB = new HyperVectorDB(new Embedder.EmbedderOpenAI("all-minilm", "dummy_key", options), "TestDatabase");
+        HyperVectorDB DB = new HyperVectorDB(new Embedder.EmbedderOpenAI("all-minilm", new ApiKeyCredential("dummy_key"), options), "TestDatabase");
         DB.IndexDocument("This is a test document about dogs", TestPreprocessor, null, "TestDatabase");
         DB.IndexDocument("This is a test document about cats", TestPreprocessor, null, "TestDatabase");
         DB.IndexDocument("This is a test document about fish", TestPreprocessor, null, "TestDatabase");
@@ -62,7 +64,7 @@ public class ProcessorTests
         {
             Endpoint = new Uri("http://localhost:11434/v1")
         };
-        HyperVectorDB DB = new HyperVectorDB(new Embedder.EmbedderOpenAI("all-minilm", "dummy_key", options), "TestDatabase");
+        HyperVectorDB DB = new HyperVectorDB(new Embedder.EmbedderOpenAI("all-minilm", new ApiKeyCredential("dummy_key"), options), "TestDatabase");
         DB.IndexDocument("This is a test document about dogs", null, TestPostprocessor, "TestDatabase");
         DB.Save();
         var result = DB.QueryCosineSimilarity("dogs", 1);

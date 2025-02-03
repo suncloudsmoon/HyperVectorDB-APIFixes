@@ -1,9 +1,6 @@
-﻿// MODIFIED FILE
-// MODIFIED ON THE FOLLOWING DATES: 8/19/2024, 8/20/2024
-
+﻿using System.ClientModel;
 using System.Diagnostics;
 using OpenAI;
-using OpenAI.Embeddings;
 
 namespace HyperVectorDBExample
 {
@@ -63,7 +60,7 @@ namespace HyperVectorDBExample
             {
                 Endpoint = new Uri("http://localhost:11434/v1")
             };
-            DB = new HyperVectorDB.HyperVectorDB(new HyperVectorDB.Embedder.EmbedderOpenAI("mxbai-embed-large", "dummy_key", options), "TestDatabase", 32);
+            DB = new HyperVectorDB.HyperVectorDB(new HyperVectorDB.Embedder.EmbedderOpenAI("mxbai-embed-large", new ApiKeyCredential("dummy_key"), options), "TestDatabase", 32);
             if (Directory.Exists("TestDatabase"))
             {
                 Console.WriteLine("Loading database");
@@ -91,9 +88,9 @@ namespace HyperVectorDBExample
                 DB.IndexDocument("This is a test document about fish and birds and dogs and cats");
                 DB.IndexDocument("This is a test document about birds and dogs and cats and fish");
                 DB.Save();
-                DB = new HyperVectorDB.HyperVectorDB(new HyperVectorDB.Embedder.EmbedderOpenAI("mxbai-embed-large", "dummy_key", options), "TestDatabase", 32);
+                DB = new HyperVectorDB.HyperVectorDB(new HyperVectorDB.Embedder.EmbedderOpenAI("mxbai-embed-large", new ApiKeyCredential("dummy_key"), options), "TestDatabase", 32);
                 DB.Load();
-                
+
                 string[] files = Directory.GetFiles(@".\TestDocuments", "*.*", SearchOption.AllDirectories);
                 Console.WriteLine($"Indexing {files.Length} files.");
                 int i = 0;
