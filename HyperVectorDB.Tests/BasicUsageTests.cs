@@ -1,6 +1,3 @@
-// MODIFIED FILE
-// MODIFIED ON THE FOLLOWING DATES: 8/19/2024, 8/20/2024
-
 using OpenAI;
 
 namespace HyperVectorDB.Tests;
