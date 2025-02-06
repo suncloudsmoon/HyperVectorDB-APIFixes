@@ -116,8 +116,9 @@ namespace HyperVectorDB
         /// <param name="document">Text to be vectorized and indexed</param>
         /// <param name="preprocessor">Optional preprocessor delegate to process text prior to vectorization</param>
         /// <param name="postprocessor">Optional postrpocessor delegate to process text prior to storage in database</param>
+        /// <param name="markers">Additional information to add inside the document ID</param>
         /// <returns>`True` if the text was vectorized and stored without issue. `False` if an error was encountered or if the Preprocessor or Postprocessor delegates returned `null`</returns>
-        public bool IndexDocument(string indexName, string document, DocumentPreprocessor? preprocessor = null, DocumentPostprocessor? postprocessor = null)
+        public bool IndexDocument(string indexName, string document, DocumentPreprocessor? preprocessor = null, DocumentPostprocessor? postprocessor = null, string? markers = null)
         {
             //Passthrough overload to avoid breaking changes to API
             return IndexDocument(document, preprocessor, postprocessor, indexName);
@@ -130,8 +131,9 @@ namespace HyperVectorDB
         /// <param name="preprocessor">Optional preprocessor delegate to process text prior to vectorization</param>
         /// <param name="postprocessor">Optional postrpocessor delegate to process text prior to storage in database</param>
         /// <param name="indexName">Optional. Name of the index to store in. If ommited, an index will be chosen automatically</param>
+        /// <param name="markers">Additional information to add inside the document ID</param>
         /// <returns>`True` if the text was vectorized and stored without issue. `False` if an error was encountered or if the Preprocessor or Postprocessor delegates returned `null`</returns>
-        public bool IndexDocument(string document, DocumentPreprocessor? preprocessor = null, DocumentPostprocessor? postprocessor = null, string? indexName = null)
+        public bool IndexDocument(string document, DocumentPreprocessor? preprocessor = null, DocumentPostprocessor? postprocessor = null, string? indexName = null, string? markers = null)
         {
             string IndexName;
             if (indexName != null)
@@ -160,7 +162,7 @@ namespace HyperVectorDB
             }
 
 
-            string id = GetUniqueIndexId(IndexName);
+            string id = GetUniqueIndexId(IndexName, markers);
             if (postprocessor != null)
             {
                 string? postDoc = postprocessor(document);
@@ -200,8 +202,9 @@ namespace HyperVectorDB
         /// <param name="preprocessor">Optional preprocessor delegate to process text prior to vectorization</param>
         /// <param name="postprocessor">Optional postrpocessor delegate to process text prior to storage in database</param>
         /// <param name="indexName">Optional. Name of the index to store in. If ommited, an index will be chosen automatically</param>
+        /// <param name="markers">Additional information to add inside the document ID</param>
         /// <returns></returns>
-        public bool IndexDocumentFile(string documentPath, DocumentPreprocessor? preprocessor = null, DocumentPostprocessor? postprocessor = null, string? indexName = null)
+        public bool IndexDocumentFile(string documentPath, DocumentPreprocessor? preprocessor = null, DocumentPostprocessor? postprocessor = null, string? indexName = null, string? markers = null)
         {
             if (!System.IO.File.Exists(documentPath)) return false;
 
@@ -236,7 +239,7 @@ namespace HyperVectorDB
                     if (line == null) { continue; }
                 }
 
-                string id = GetUniqueIndexId(IndexName);
+                string id = GetUniqueIndexId(IndexName, markers);
                 if (postprocessor != null)
                 {
                     string? postDoc = postprocessor(lines[i], documentPath, i);
@@ -358,9 +361,12 @@ namespace HyperVectorDB
             return hashedValue;
         }
 
-        private static string GetUniqueIndexId(string indexName)
+        private static string GetUniqueIndexId(string indexName, string? markers = null)
         {
-            return $"{indexName} {Guid.NewGuid().ToString()}";
+            if (indexName == null)
+                return $"{indexName} {Guid.NewGuid().ToString()}";
+            else
+                return $"{indexName} {markers} {Guid.NewGuid().ToString()}";
         }
 
     }
