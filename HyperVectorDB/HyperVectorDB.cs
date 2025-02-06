@@ -160,19 +160,19 @@ namespace HyperVectorDB
             }
 
 
-
+            string id = GetUniqueIndexId(IndexName);
             if (postprocessor != null)
             {
                 string? postDoc = postprocessor(document);
                 if (postDoc == null) { return false; }
-                var doc = new HVDBDocument(postDoc);
+                var doc = new HVDBDocument(id, postDoc);
                 var vector = _embedder.GetVector(line);
                 index.Add(vector, doc);
                 return true;
             }
             else
             {
-                var doc = new HVDBDocument(line);
+                var doc = new HVDBDocument(id, line);
                 var vector = _embedder.GetVector(line);
                 index.Add(vector, doc);
                 return true;
@@ -236,17 +236,18 @@ namespace HyperVectorDB
                     if (line == null) { continue; }
                 }
 
+                string id = GetUniqueIndexId(IndexName);
                 if (postprocessor != null)
                 {
                     string? postDoc = postprocessor(lines[i], documentPath, i);
                     if (postDoc == null) { return false; }
-                    var doc = new HVDBDocument(postDoc);
+                    var doc = new HVDBDocument(id, postDoc);
                     var vector = _embedder.GetVector(line);
                     index.Add(vector, doc);
                 }
                 else
                 {
-                    var doc = new HVDBDocument(line);
+                    var doc = new HVDBDocument(id, line);
                     var vector = _embedder.GetVector(line);
                     index.Add(vector, doc);
                 }
@@ -355,6 +356,11 @@ namespace HyperVectorDB
                 hashedValue = (hashedValue + text[i]) * 3074457345618258799ul;
             }
             return hashedValue;
+        }
+
+        private static string GetUniqueIndexId(string indexName)
+        {
+            return $"{indexName} {Guid.NewGuid().ToString()}";
         }
 
     }
