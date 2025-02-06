@@ -9,19 +9,22 @@
     <Title>HyperVectorDB API Fixes</Title>
     <Description>HyperVectorDB – simple. powerful.
 A local vector database built in C#, engineered for effortless precision. Explore your data using Cosine, Jaccard, Euclidean, Manhattan, Chebyshev, and Canberra distances.</Description>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <PackageProjectUrl>https://github.com/suncloudsmoon/HyperVectorDB-APIFixes</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/suncloudsmoon/HyperVectorDB-APIFixes</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>vectordb, ai, database, db, embeddings</PackageTags>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-    <FileVersion>1.1.0</FileVersion>
+    <AssemblyVersion>1.1.1</AssemblyVersion>
+    <FileVersion>1.1.1</FileVersion>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>HyperVectorDB-APIFixes</PackageId>
-    <PackageReleaseNotes>1.1.0
+    <PackageReleaseNotes>1.1.1
+- Update document ID handling
+---
+1.1.0
 - Update copyright details for package
 - Update package description
 ---
